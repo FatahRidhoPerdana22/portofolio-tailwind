@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portofolio Tailwind</title>
+    <link rel="icon" href="dist/img/logo.png" type="image/x-icon" />
     <link href="dist/css/style.css" rel="stylesheet" />
     <!-- icons -->
     <link
@@ -12,6 +13,13 @@
     />
   </head>
   <body>
+    <!-- loading -->
+    <div class="hidden h-screen items-center justify-center">
+      <div
+        class="h-16 w-16 animate-spin rounded-full border-4 border-t-4 border-solid border-gray-200"
+      ></div>
+    </div>
+
     <!-- Header Start -->
     <header
       class="absolute left-0 top-0 z-50 flex w-full items-center bg-transparent"
@@ -20,8 +28,11 @@
         <div class="relative flex items-center justify-between">
           <div class="px-4">
             <a href="#home" class="block py-6 text-lg font-bold text-primary"
-              >fatahridho</a
-            >
+              ><img
+                class="h-6 w-12 lg:h-10 lg:w-20"
+                src="dist/img/logo.png"
+                alt=""
+            /></a>
           </div>
           <div class="flex items-center px-4">
             <button
@@ -284,16 +295,15 @@
             <h1 class="text-base font-semibold text-primary md:text-xl">
               <span data-translate="heroGreeting"> Halo Semua👋😄, Saya</span
               ><span
-                class="my-1 block text-4xl font-bold text-dark dark:text-white lg:text-5xl"
+                class="my-1 block animate-typing overflow-hidden whitespace-nowrap text-4xl font-bold text-dark dark:text-white lg:text-5xl"
               >
                 Fatah Ridho Perdana</span
               >
             </h1>
             <h2
-              class="mb-5 text-base font-medium text-secondary dark:text-slate-200 lg:text-2xl"
-            >
-              Fresh Graduate | Web Developer | Tech Enthusiast
-            </h2>
+              class="mb-5 animate-typing overflow-hidden whitespace-nowrap text-base font-medium text-secondary dark:text-slate-200 lg:text-2xl"
+              id="typing-text"
+            ></h2>
             <p
               class="mb-10 font-medium leading-relaxed text-secondary dark:text-slate-300"
             >
@@ -467,6 +477,126 @@
       </div>
     </section>
     <!-- About Section End -->
+
+    <!-- Skill Section Start -->
+    <section
+      id="skill"
+      class="hidden bg-slate-600 pb-32 pt-36 dark:bg-slate-300"
+    >
+      <div class="container mx-auto px-4">
+        <div class="mb-16 text-center">
+          <h4
+            class="mb-2 text-lg font-semibold text-primary sm:text-2xl lg:text-3xl"
+          >
+            Skills
+          </h4>
+          <h2
+            class="mb-4 text-2xl font-bold text-white dark:text-dark md:text-3xl lg:text-5xl"
+          >
+            Kemampuan & Pengetahuan
+          </h2>
+          <p
+            class="text-center text-base font-medium text-slate-400 md:text-lg"
+          >
+            Kolaborasi dengan lembaga ini mencerminkan komitmen saya untuk terus
+            belajar, meningkatkan keterampilan, dan memberikan kontribusi
+            terbaik di bidang teknologi.
+          </p>
+        </div>
+
+        <!-- Skill Cards -->
+        <div
+          class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        >
+          <!-- HTML Card -->
+          <div
+            class="flex flex-col items-center rounded-xl bg-white p-6 shadow-lg transition duration-300 hover:shadow-xl dark:bg-dark"
+          >
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <p>Front Side</p>
+                </div>
+                <div class="card-back">
+                  <p>Back Side</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CSS Card -->
+          <div
+            class="flex flex-col items-center rounded-xl bg-white p-6 shadow-lg transition duration-300 hover:shadow-xl dark:bg-dark"
+          >
+            <img
+              src="path/to/css-logo.svg"
+              alt="CSS Logo"
+              class="mb-4 h-16 w-16"
+            />
+            <h3 class="text-xl font-semibold text-slate-800 dark:text-white">
+              CSS
+            </h3>
+          </div>
+
+          <!-- JavaScript Card -->
+          <div
+            class="flex flex-col items-center rounded-xl bg-white p-6 shadow-lg transition duration-300 hover:shadow-xl dark:bg-dark"
+          >
+            <img
+              src="path/to/js-logo.svg"
+              alt="JavaScript Logo"
+              class="mb-4 h-16 w-16"
+            />
+            <h3 class="text-xl font-semibold text-slate-800 dark:text-white">
+              JavaScript
+            </h3>
+          </div>
+
+          <!-- React Card -->
+          <div
+            class="flex flex-col items-center rounded-xl bg-white p-6 shadow-lg transition duration-300 hover:shadow-xl dark:bg-dark"
+          >
+            <img
+              src="path/to/react-logo.svg"
+              alt="React Logo"
+              class="mb-4 h-16 w-16"
+            />
+            <h3 class="text-xl font-semibold text-slate-800 dark:text-white">
+              React
+            </h3>
+          </div>
+
+          <!-- Tailwind CSS Card -->
+          <div
+            class="flex flex-col items-center rounded-xl bg-white p-6 shadow-lg transition duration-300 hover:shadow-xl dark:bg-dark"
+          >
+            <img
+              src="path/to/tailwind-logo.svg"
+              alt="Tailwind CSS Logo"
+              class="mb-4 h-16 w-16"
+            />
+            <h3 class="text-xl font-semibold text-slate-800 dark:text-white">
+              Tailwind CSS
+            </h3>
+          </div>
+
+          <!-- Node.js Card -->
+          <div
+            class="flex flex-col items-center rounded-xl bg-white p-6 shadow-lg transition duration-300 hover:shadow-xl dark:bg-dark"
+          >
+            <img
+              src="path/to/nodejs-logo.svg"
+              alt="Node.js Logo"
+              class="mb-4 h-16 w-16"
+            />
+            <h3 class="text-xl font-semibold text-slate-800 dark:text-white">
+              Node.js
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Skill Section End -->
 
     <!-- Portofolio Section Start -->
     <section id="portofolio" class="bg-slate-100 pb-16 pt-36 dark:bg-slate-700">

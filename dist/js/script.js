@@ -213,3 +213,55 @@ languageItems.forEach((item) => {
 const storedLang = localStorage.getItem('lang') || 'en'
 document.body.setAttribute('data-lang', storedLang)
 setLanguage(storedLang)
+
+// Animasi Typing text
+// Array teks yang akan ditampilkan
+const texts = ['Fresh Graduate', 'Web Developer', 'Tech Enthusiast']
+const typingText = document.getElementById('typing-text')
+let index = 0 // Index teks saat ini
+let charIndex = 0 // Index karakter saat ini
+let isDeleting = false // Status penghapusan teks
+
+// Kecepatan animasi
+const typingSpeed = 100 // Kecepatan mengetik (ms)
+const deletingSpeed = 50 // Kecepatan menghapus (ms)
+const delayBetweenTexts = 1000 // Waktu jeda antara teks (ms)
+
+function typeEffect() {
+  const currentText = texts[index]
+  if (isDeleting) {
+    // Kurangi karakter
+    charIndex--
+    typingText.textContent = currentText.substring(0, charIndex)
+  } else {
+    // Tambahkan karakter
+    charIndex++
+    typingText.textContent = currentText.substring(0, charIndex)
+  }
+
+  // Tentukan langkah berikutnya
+  if (!isDeleting && charIndex === currentText.length) {
+    // Teks selesai, tunggu sebelum menghapus
+    isDeleting = true
+    setTimeout(typeEffect, delayBetweenTexts)
+  } else if (isDeleting && charIndex === 0) {
+    // Penghapusan selesai, ganti ke teks berikutnya
+    isDeleting = false
+    index = (index + 1) % texts.length // Berpindah ke teks berikutnya
+    setTimeout(typeEffect, typingSpeed)
+  } else {
+    // Lanjut mengetik atau menghapus
+    setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed)
+  }
+}
+
+// Mulai animasi
+typeEffect()
+
+// animasi cursor
+const cursorShadow = document.getElementById('cursor-shadow')
+
+document.addEventListener('mousemove', (e) => {
+  const { clientX, clientY } = e
+  cursorShadow.style.transform = `translate(${clientX}px, ${clientY}px)`
+})
