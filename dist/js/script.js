@@ -318,3 +318,76 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(target)
   }
 })
+
+// chat telegram
+function showAlert(type, title, message) {
+  const alertModal = document.getElementById('alertModal')
+  const alertBox = document.getElementById('alertBox')
+  const alertTitle = document.getElementById('alertTitle')
+  const alertMessage = document.getElementById('alertMessage')
+
+  // Atur teks dan gaya berdasarkan tipe
+  alertTitle.textContent = title
+  alertMessage.textContent = message
+
+  if (type === 'success') {
+    alertBox.className =
+      'w-11/12 max-w-md rounded-lg bg-green-500 p-6 text-center text-white shadow-lg'
+  } else if (type === 'error') {
+    alertBox.className =
+      'w-11/12 max-w-md rounded-lg bg-red-500 p-6 text-center text-white shadow-lg'
+  }
+
+  // Tampilkan modal
+  alertModal.classList.remove('hidden')
+}
+
+// Tutup modal ketika tombol "Tutup" diklik
+document.getElementById('closeAlert').addEventListener('click', function () {
+  document.getElementById('alertModal').classList.add('hidden')
+})
+
+// Tangani pengiriman formulir
+document.querySelector('form').addEventListener('submit', async function (e) {
+  e.preventDefault()
+
+  const name = document.getElementById('name').value
+  const email = document.getElementById('email').value
+  const message = document.getElementById('message').value
+
+  const chatId = '1183689685' // Ganti dengan chat ID Anda
+  const botToken = '7196136224:AAHcHW4o5SRERn1uauIEu26NklDFcl01qg8' // Ganti dengan bot token Anda
+  const text = `Nama: ${name}\nEmail: ${email}\nPesan: ${message}`
+
+  try {
+    const response = await fetch(
+      `https://api.telegram.org/bot${botToken}/sendMessage`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+        }),
+      },
+    )
+
+    if (response.ok) {
+      showAlert(
+        'success',
+        'Pesan Terkirim!',
+        'Terima kasih, pesan Anda telah berhasil dikirim.',
+      )
+      document.querySelector('form').reset()
+    } else {
+      showAlert('error', 'Gagal Mengirim Pesan', 'Silakan coba lagi nanti.')
+    }
+  } catch (error) {
+    showAlert(
+      'error',
+      'Kesalahan Terjadi',
+      'Terjadi kesalahan saat mengirim pesan. Silakan coba lagi.',
+    )
+    console.error(error)
+  }
+})
