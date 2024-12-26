@@ -25,14 +25,45 @@ module.exports = {
           '0%, 100%': { borderColor: 'transparent' },
           '50%': { borderColor: 'currentColor' },
         },
-        rotateY: {
-          '0%': { transform: 'rotateY(0deg)' },
-          '100%': { transform: 'rotateY(180deg)' },
+        'zoom-in-up': {
+          '0%': {
+            opacity: 0,
+            transform: 'scale3d(0.3, 0.3, 0.3) translate3d(0, 100%, 0)',
+          },
+          '80%': {
+            opacity: 0.8,
+            transform: 'scale3d(1.1, 1.1, 1.1)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translate3d(0, 0%, 0)',
+          },
+        },
+        'fade-in-up': {
+          '0%': {
+            opacity: 0,
+            transform: 'translate3d(0, 100%, 0)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translate3d(0, 0, 0)',
+          },
+        },
+        'fade-out-down': {
+          '0%': {
+            opacity: 1,
+          },
+          '100%': {
+            opacity: 0,
+            transform: 'translate3d(0, 100%, 0)',
+          },
         },
       },
       animation: {
         typing: 'typing 3s steps(30, end), blink 0.5s step-end infinite',
-        rotateY: 'rotateY 1s ease-in-out',
+        zoomInUp: 'zoom-in-up 1s ease-out 0.25s 1',
+        fadeinup: 'fade-in-up 1s ease-in-out 0.25s 1',
+        fadeoutdown: 'fade-out-down 1s ease-in-out 0.25s 1',
       },
     },
   },

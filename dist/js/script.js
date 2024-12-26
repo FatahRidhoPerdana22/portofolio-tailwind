@@ -74,6 +74,40 @@ window.addEventListener('DOMContentLoaded', () => {
     : (darkToggle.checked = false, html.classList.remove('dark'));
 });*/
 
+// sub menu
+document
+  .getElementById('dropdown-about')
+  .addEventListener('click', function (event) {
+    const dropdownMenu = document.getElementById('dropdown-menu-about')
+
+    // Toggle visibility
+    dropdownMenu.classList.toggle('hidden')
+
+    // Close other dropdowns if necessary (optional)
+    const otherDropdowns = document.querySelectorAll('.dropdown-menu-about')
+    otherDropdowns.forEach(function (menu) {
+      if (menu !== dropdownMenu) {
+        menu.classList.add('hidden')
+      }
+    })
+
+    // Prevent event from bubbling up to parent elements
+    event.stopPropagation()
+  })
+
+// Close the dropdown if clicked outside of it
+document.addEventListener('click', function (event) {
+  const dropdownMenu = document.getElementById('dropdown-menu-about')
+  const dropdownButton = document.getElementById('dropdown-about')
+
+  if (
+    !dropdownMenu.contains(event.target) &&
+    !dropdownButton.contains(event.target)
+  ) {
+    dropdownMenu.classList.add('hidden')
+  }
+})
+
 // dropdown bahasa
 const languageBtn = document.getElementById('language-btn')
 const languageDropdown = document.getElementById('language-dropdown')
@@ -95,7 +129,9 @@ window.addEventListener('click', function (e) {
 const translations = {
   en: {
     home: 'Home',
+    profile: 'Profile',
     about: 'About Me',
+    skill: 'Skills',
     portfolio: 'Portfolio',
     courses: 'Courses',
     certificates: 'Certificates',
@@ -111,9 +147,12 @@ const translations = {
     aboutContent: 'Fresh Graduate with a Spirit of Innovation',
     aboutDescription:
       'I am a graduate of Informatics Engineering with a GPA of 3.49, with experience in various academic projects. I am committed to continuously improving my skills in the field of technology development, particularly web development and software solutions, to create a meaningful impact in the digital world.',
-    expertiseTitle: 'Expertise',
-    expertiseDescription:
-      'My expertise includes web development (HTML, CSS, JavaScript, PHP). I can also work well both independently and in teams to deliver optimal results.',
+    friendTitle: 'Let`s be friends',
+    friendDescription:
+      'Let`s connect and make friends! Please visit my social media profiles below to share and sell ideas.',
+    skillSubtitle: 'Abilities & Knowledge',
+    skillDescription:
+      'Every skill I have is part of my journey to become a competent professional and continue to learn to provide the best results in every job.',
     portfolioSubtitle: 'Latest Projects',
     portfolioDescription:
       'This portfolio showcases some of the recent projects I have worked on, reflecting my dedication to developing modern technology, creative, and design skills.',
@@ -133,7 +172,9 @@ const translations = {
   },
   id: {
     home: 'Beranda',
+    profile: 'Profil',
     about: 'Tentang Saya',
+    skill: 'Keterampilan',
     portfolio: 'Portofolio',
     courses: 'Kursus',
     certificates: 'Sertifikat',
@@ -149,9 +190,12 @@ const translations = {
     aboutContent: 'Fresh Graduate dengan Semangat Inovasi',
     aboutDescription:
       'Saya adalah lulusan Teknik Informatika dengan IPK 3.49, memiliki pengalaman dalam berbagai proyek akademik. Saya berkomitmen untuk terus meningkatkan keahlian di bidang pengembangan teknologi, khususnya pengembangan web dan solusi perangkat lunak, untuk menciptakan dampak yang bermanfaat di dunia digital.',
-    expertiseTitle: 'Keahlian',
-    expertiseDescription:
-      'Keahlian saya mencakup pengembangan web (HTML, CSS, JavaScript, PHP). Saya juga dapat bekerja secara tim maupun mandiri untuk menyelesaikan proyek dengan hasil yang optimal.',
+    friendTitle: 'Mari Berteman',
+    friendDescription:
+      'Ayo terhubung dan berteman! Silakan kunjungi profil media sosial saya di bawah ini untuk berbagi dan bertukar ide.',
+    skillSubtitle: 'Kemampuan & Pengetahuan',
+    skillDescription:
+      'Setiap keterampilan yang saya miliki adalah bagian dari perjalanan saya untuk menjadi seorang profesional yang kompeten dan terus belajar demi memberikan hasil terbaik dalam setiap pekerjaan.',
     portfolioSubtitle: 'Project Terbaru',
     portfolioDescription:
       'Portofolio ini menampilkan beberapa proyek terbaru yang telah saya kerjakan, mencerminkan dedikasi saya dalam mengembangkan keterampilan teknologi modern, kreatif dan desain.',
@@ -258,10 +302,19 @@ function typeEffect() {
 // Mulai animasi
 typeEffect()
 
-// animasi cursor
-const cursorShadow = document.getElementById('cursor-shadow')
+// animasi
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fadeinup')
+        observer.unobserve(entry.target) // Hentikan observer setelah animasi berjalan
+      }
+    })
+  })
 
-document.addEventListener('mousemove', (e) => {
-  const { clientX, clientY } = e
-  cursorShadow.style.transform = `translate(${clientX}px, ${clientY}px)`
+  const target = document.querySelector('.animate-fadeinup')
+  if (target) {
+    observer.observe(target)
+  }
 })

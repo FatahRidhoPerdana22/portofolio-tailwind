@@ -33,13 +33,12 @@ body {
 
 /* From Uiverse.io by vamsidevendrakumar */
 .card {
+  @apply h-40 w-full;
   perspective: 1000px;
 }
 
 .card-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  @apply relative h-full w-full;
   transform-style: preserve-3d;
   transition: transform 0.999s;
 }
@@ -50,32 +49,14 @@ body {
 
 .card-front,
 .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  @apply absolute h-full w-full;
   backface-visibility: hidden;
 }
 
 .card-front {
-  background-color: #6a2c70;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  border: 10px solid #6a2c70;
-  border-radius: 10px;
-  justify-content: center;
-  font-size: 24px;
   transform: rotateY(0deg);
 }
 
 .card-back {
-  background-color: #f08a5d;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  border: 10px solid #f08a5d;
-  border-radius: 10px;
-  justify-content: center;
-  font-size: 24px;
   transform: rotateY(180deg);
 }
