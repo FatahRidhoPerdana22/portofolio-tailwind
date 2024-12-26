@@ -323,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function showAlert(type, title, message) {
   const alertModal = document.getElementById('alertModal')
   const alertBox = document.getElementById('alertBox')
+  const alertImage = document.getElementById('alertImage')
   const alertTitle = document.getElementById('alertTitle')
   const alertMessage = document.getElementById('alertMessage')
 
@@ -332,10 +333,12 @@ function showAlert(type, title, message) {
 
   if (type === 'success') {
     alertBox.className =
-      'w-11/12 max-w-md rounded-lg bg-green-500 p-6 text-center text-white shadow-lg'
+      'w-full max-w-md rounded-lg bg-white flex flex-col items-center justify-center p-6 text-center text-dark shadow-lg'
+    alertImage.src = 'dist/img/check.png'
   } else if (type === 'error') {
     alertBox.className =
-      'w-11/12 max-w-md rounded-lg bg-red-500 p-6 text-center text-white shadow-lg'
+      'w-full max-w-md rounded-lg bg-white flex flex-col items-center justify-center p-6 text-center text-dark shadow-lg'
+    alertImage.src = 'dist/img/cancel.png'
   }
 
   // Tampilkan modal

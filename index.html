@@ -1663,13 +1663,14 @@
       <div class="absolute inset-0 flex items-center justify-center">
         <div
           id="alertBox"
-          class="w-11/12 max-w-md rounded-lg p-6 text-center shadow-lg"
+          class="flex w-full max-w-md flex-col items-center justify-center rounded-lg p-6 text-center shadow-lg"
         >
-          <h3 id="alertTitle" class="mb-4 text-2xl font-semibold"></h3>
+          <img id="alertImage" src="" class="mb-3 w-20" alt="" />
+          <h3 id="alertTitle" class="my-2 text-2xl font-semibold"></h3>
           <p id="alertMessage" class="mb-6 text-base"></p>
           <button
             id="closeAlert"
-            class="rounded-full px-6 py-2 text-white hover:opacity-80"
+            class="rounded-full bg-primary px-6 py-2 text-white hover:opacity-80"
           >
             Tutup
           </button>
