@@ -323,9 +323,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function showAlert(type, title, message) {
   const alertModal = document.getElementById('alertModal')
   const alertBox = document.getElementById('alertBox')
+  const alertClose = document.getElementById('closeAlert')
   const alertImage = document.getElementById('alertImage')
   const alertTitle = document.getElementById('alertTitle')
   const alertMessage = document.getElementById('alertMessage')
+  const body = document.body
 
   // Atur teks dan gaya berdasarkan tipe
   alertTitle.textContent = title
@@ -333,12 +335,18 @@ function showAlert(type, title, message) {
 
   if (type === 'success') {
     alertBox.className =
-      'w-full max-w-md rounded-lg bg-white flex flex-col items-center justify-center p-6 text-center text-dark shadow-lg'
+      'w-8/12 mx-auto flex max-w-md flex-col green rounded-lg border-2 p-6 text-center shadow-lg relative'
+    alertClose.className =
+      'h-8 w-8 border green absolute -right-3 -top-5 rounded-full'
     alertImage.src = 'dist/img/check.png'
+    body.classList.add('overflow-hidden')
   } else if (type === 'error') {
     alertBox.className =
-      'w-full max-w-md rounded-lg bg-white flex flex-col items-center justify-center p-6 text-center text-dark shadow-lg'
+      'w-8/12 mx-auto flex max-w-md flex-col red rounded-lg border-2 p-6 text-center shadow-lg relative'
+    alertClose.className =
+      'h-8 w-8 border red absolute -right-3 -top-5 rounded-full'
     alertImage.src = 'dist/img/cancel.png'
+    body.classList.add('overflow-hidden')
   }
 
   // Tampilkan modal
@@ -348,6 +356,7 @@ function showAlert(type, title, message) {
 // Tutup modal ketika tombol "Tutup" diklik
 document.getElementById('closeAlert').addEventListener('click', function () {
   document.getElementById('alertModal').classList.add('hidden')
+  body.classList.remove('overflow-hidden')
 })
 
 // Tangani pengiriman formulir
