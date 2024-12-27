@@ -356,7 +356,7 @@ function showAlert(type, title, message) {
 // Tutup modal ketika tombol "Tutup" diklik
 document.getElementById('closeAlert').addEventListener('click', function () {
   document.getElementById('alertModal').classList.add('hidden')
-  body.classList.remove('overflow-hidden')
+  document.body.classList.remove('overflow-hidden')
 })
 
 // Tangani pengiriman formulir
